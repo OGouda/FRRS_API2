@@ -1,0 +1,52 @@
+## commands to run before the start
+source env/bin/activate
+echo "source `which activate.sh`" >> ~/.bashrc
+source ~/.bashrc
+export DATABASE_URL="postgresql:///frrs_database"
+export DATABASE_URL="postgresql://172.17.0.2/frrs_database?user=postgres&password=toor"
+export APP_SETTINGS="config.DevelopmentConfig"
+
+d3a837ba6768be7f280365573e6a767b
+## Create "frrs_database" database
+sudo -u postgres -i 
+createdb frrs_database
+psql  --dbname=frrs_database
+create extension if not exists cube;
+exit
+exit
+
+## Commands to run when the database is created. 
+## Log in to the psql using the following command:
+
+
+# then add an extension to the database
+
+
+## After creating the database the following commands should be executed:
+python manage.py db init
+python manage.py db migrate
+python manage.py db upgrade
+
+## If any changes are done during the implementation, the follwoing commands should be executed:
+python manage.py db migrate
+python manage.py db upgrade
+
+# If the server was down for any reason, the following command should be run first to start the postgreSQL again:
+sudo service postgresql start
+
+sudo apt-get install wget ca-certificates
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+
+sudo apt-get update
+sudo apt-get install postgresql postgresql-contrib
+
+for psycopg install 
+sudo apt install libpq-dev python3-dev
+ADD wheel to requirements as well
+
+for dlib:
+sudo apt-get install build-essential cmake pkg-config
+sudo apt-get install libx11-dev libatlas-base-dev
+sudo apt-get install libgtk-3-dev libboost-python-dev
+add cryptography ,requests to requirements
+
